@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top position-sticky bgColor-F53D7E mb-2">
+  <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <img src="https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+      width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    Flowers
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/flowers']" routerLinkActive="active">All_Flowers</a>
+      </li>
+    </ul>
+    <div>
+      <div *ngIf="userService._isAuthenticated; then user else login"></div>
+      <ng-template #user>
+        <a [routerLink]="['user/profile']" routerLinkActive="active" class="color-White bold"><b>Welcome:</b>
+          <i>{{userService.currentUser?.firstName}}</i></a>
+      </ng-template>
+      <ng-template #login><a [routerLink]="['user/login']" routerLinkActive="active" class="color-White bold">Login</a>
+      </ng-template>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,9 @@
+<div>
+  <h2>All Flowers</h2>
+  <hr>
+  <div class="row">
+    <div class="col-sm-4 pb-3 " *ngFor="let _flower of flowers">
+      <flower-comp [flower]="_flower"></flower-comp>
+    </div>
+  </div>
+</div>

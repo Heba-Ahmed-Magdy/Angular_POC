@@ -1,0 +1,25 @@
+<div class="col-sm-5">
+  <div class="d-flex align-items-center">
+    <h2 class="mr-2">Profile info.</h2><span><i>Reactive_Form</i></span>
+  </div>
+  <hr>
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <em *ngIf="isFirstNameInvalid() && firstName.errors.required">Required</em>
+      <em *ngIf="isFirstNameInvalid() && profileForm.controls.firstName.errors.pattern">First Name must start with
+        letter</em>
+      <!-- formControlName="firstName" used to wire this input with the controler we create in component  -->
+      <input type="text" formControlName="firstName" class="form-control" id="firstName"
+        [ngClass]="{'error':isFirstNameInvalid()}" aria-describedby="firstNameHelp" placeholder="First Name...">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <em *ngIf="isLastNameInvalid()">Required</em>
+      <input type="text" [formControlName]="'lastName'" class="form-control" id="lastName"
+        [ngClass]="{'error':isLastNameInvalid()}" aria-describedby="lastNameHelp" placeholder="Last Name...">
+    </div>
+    <button type="submit" class="btn btn-primary mr-2" [disabled]="isInvalidForm()">Submit</button>
+    <button type="button" class="btn btn-primary" (click)="cancelProfileForm()">Cancel</button>
+  </form>
+</div>

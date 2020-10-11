@@ -1,0 +1,6 @@
+<div *ngIf="flower">
+  <img [src]="flower?.imgUrl" width="250" height="250" />
+  <h1>{{flower.name}}</h1>
+  <h5>{{flower.discription}}</h5>
+  <h5>{{flower.price|currency}}</h5>
+</div>
